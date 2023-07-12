@@ -1,0 +1,50 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <link rel="stylesheet" href="assets/css/main.css" />
+</head>
+<body>
+<header id="header">
+  <h1>Big Picture</h1>
+  <nav>
+    <ul>
+      <li><a href="/members/login">로그인</a></li>
+      <li><a href="#one">What I Do</a></li>
+      <li><a href="#two">Who I Am</a></li>
+      <li><a href="#work">My Work</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+</header>
+<section id="intro" class="main style1 dark fullscreen">
+  <div class="container">
+    <div>
+      <h1>로그인이나 회원가입을 통해 블로그로 들어오세요.</h1>
+      <p>회원 기능</p>
+      <p>
+        <a href="/members/new">회원 가입</a>
+        <a href="/members">회원 목록</a>
+        <a href="/members/choose">회원 찾기</a>
+      </p>
+      <p></p>
+    </div>
+  </div> <!-- /container -->
+</section>
+<section id="one">
+<div id="map" style="width:2000px;height:1000px;"></div>
+<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=2acef50b640e9eab5c467276fc8f9a65"></script>
+<script type="text/javascript">
+
+	var container = document.getElementById('map'); //지도를 담을 영역의 DOM 레퍼런스
+	var options = { //지도를 생성할 때 필요한 기본 옵션
+		center: new kakao.maps.LatLng(37.440701, 125.590667), //지도의 중심좌표.
+		level: 4 //지도의 레벨(확대, 축소 정도)
+	};
+
+	var map = new kakao.maps.Map(container, options); //지도 생성 및 객체 리턴
+
+</script>
+</section>
+</body>
+
+</html>
