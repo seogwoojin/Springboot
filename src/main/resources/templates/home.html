@@ -1,11 +1,11 @@
 <!DOCTYPE HTML>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-  <link rel="stylesheet" href="assets/css/main.css" />
+  <link rel="stylesheet" href="assets/css/main.css" th:href="@{/assets/css/main.css}"/>
 </head>
 <body>
 <header id="header">
-  <h1>Big Picture</h1>
+  <h1 th:text="${nicks}" >Big Picture</h1>
   <nav>
     <ul>
       <li><a href="/members/login">로그인</a></li>

@@ -82,11 +82,10 @@ public class MemberController {
             nick=members.getNickname();
         } catch (Exception e) {
             model.addAttribute("error", "다시 시도해주세요");
-            return "/members/login";
+            return "members/login";
         }
-
         model.addAttribute("nicks", nick);
-        return "/members/welcome";
+        return "home";
 
     }
 

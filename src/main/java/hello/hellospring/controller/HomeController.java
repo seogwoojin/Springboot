@@ -11,6 +11,6 @@ public class HomeController {
     }
     @GetMapping("blog")
     public String blog(){
-        return "/html5up-big-picture/blog";
+        return "/blogs/blog";
     }
 }
