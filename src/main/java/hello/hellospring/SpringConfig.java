@@ -1,6 +1,7 @@
 package hello.hellospring;
 import hello.hellospring.repository.*;
 import hello.hellospring.service.MemberService;
+import hello.hellospring.service.PostService;
 import jakarta.persistence.EntityManager;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -16,6 +17,8 @@ public class SpringConfig {
         this.em = em;
     }
     @Bean
+    public PostService postService(){return new PostService(jpaPostRepository());}
+    @Bean
     public MemberService memberService() {
         return new MemberService(memberRepository());
     }
@@ -25,5 +28,8 @@ public class SpringConfig {
 // return new JdbcMemberRepository(dataSource);
 // return new JdbcTemplateMemberRepository(dataSource);
         return new JpaMemberRepository(em);
+    }
+    @Bean JpaPostRepository jpaPostRepository(){
+        return new JpaPostRepository(em);
     }
 }
