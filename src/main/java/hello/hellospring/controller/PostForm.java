@@ -29,21 +29,11 @@ public class PostForm {
         this.date = date;
     }
 
-    public Integer getViews() {
-        return views;
-    }
-
-    public void setViews(Integer views) {
-        this.views = views;
-    }
-
     private String content;
 
     private String writer;
 
     private Date date;
-
-    private Integer views;
 
     public String getTitle() {
         return title;

@@ -51,4 +51,6 @@ public class JpaMemberRepository implements MemberRepository{
                 .getResultList();
         return result.stream().findAny();
     }
+
+
 }

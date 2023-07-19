@@ -48,13 +48,15 @@ a {
     border: 1px solid #000;
     border-radius: 2px;
     font-size: 1.4rem;
+    background: #fff;
+    color: #000;
 }
 
 .bt_wrap a:first-child {
     margin-left: 0;
 }
 
-.bt_wrap a.on {
+.bt_wrap a.on, .bt_wrap button.on{
     background: #000;
     color: #fff;
 }

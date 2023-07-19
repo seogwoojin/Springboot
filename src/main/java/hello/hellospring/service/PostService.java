@@ -27,6 +27,11 @@ public class PostService {
     }
 
     public Post findPost(Long id){
+        jpaPostRepository.updateViews(id);
         return jpaPostRepository.findById(id);
+    }
+
+    public Post editPost(Post post){
+        return jpaPostRepository.editPost(post);
     }
 }
