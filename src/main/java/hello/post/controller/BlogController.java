@@ -7,8 +7,10 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.sql.Date;
+import java.util.ArrayList;
 import java.util.List;
 
+@RequestMapping("/blogs")
 @Controller
 public class BlogController {
     private final PostService postService;
@@ -17,19 +19,43 @@ public class BlogController {
         this.postService = postService;
     }
 
-    @GetMapping("/blogs/list")
-    public String list(@RequestParam() Model model){
+    @GetMapping("/list")
+    public String list(Model model){
         List<Post> posts=postService.findPosts();
         model.addAttribute("posts", posts);
         return "blogs/list";
     }
+    @RequestMapping("/list/{page}")
+    public String list(@PathVariable int page, Model model){
+        List<Post> posts=postService.findPosts();
 
-    @GetMapping("/blogs/write")
+        int start=(page-1)*10;
+
+
+        if(start<posts.size()) {
+            List<Post> listPost = new ArrayList<>();
+            for (int i = start; i < start + 10; i++) {
+                if (i == posts.size() - 1) break;
+                listPost.add(posts.get(i));
+            }
+            model.addAttribute("page", page);
+            model.addAttribute("posts", listPost);
+            return "blogs/list";
+        }
+
+
+
+        model.addAttribute("posts", posts);
+        model.addAttribute("page", page);
+        return "blogs/list";
+    }
+
+    @GetMapping("/write")
     public String writeform(){
         return "blogs/write";
     }
 
-    @PostMapping("/blogs/write")
+    @PostMapping("/write")
     public String write(PostForm postForm){
         java.util.Date utilDate = new java.util.Date();
         long currentMilliseconds = utilDate.getTime();
@@ -46,19 +72,19 @@ public class BlogController {
         return "redirect:/blogs/list";
     }
 
-    @GetMapping("/blogs/view")
+    @GetMapping("/view")
     public String viewWhat(@RequestParam("id") Long id, Model model){
         model.addAttribute("post", postService.findPost(id));
         return "blogs/view";
     }
 
-    @GetMapping("/blogs/editwhat")
+    @GetMapping("/editwhat")
     public String editWhat(@RequestParam("id") Long id, Model model){
         model.addAttribute("post", postService.findPost(id));
         return "blogs/edit";
     }
 
-    @PostMapping("/blogs/edit")
+    @PostMapping("/edit")
     public String edit(@RequestParam("id") Long id, PostForm postForm){
         java.util.Date utilDate = new java.util.Date();
         long currentMilliseconds = utilDate.getTime();
@@ -73,9 +99,11 @@ public class BlogController {
         return "redirect:/blogs/list";
     }
 
-    @GetMapping("/blogs/delete")
+    @GetMapping("/delete")
     public String deleteWhat(@RequestParam("id") Long id){
         postService.delete(id);
         return "redirect:/blogs/list";
     }
+
+
 }

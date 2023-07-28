@@ -31,18 +31,18 @@
 
             </div>
             <div class="board_page">
-                <a href="1" class="bt first"><<</a>
-                <a href="2" class="bt prev"><</a>
-                <a href="3" class="num on">1</a>
-                <a href="#" class="num">2</a>
-                <a href="#" class="num">3</a>
-                <a href="#" class="num">4</a>
-                <a href="#" class="num">5</a>
-                <a href="#" class="bt next">></a>
-                <a href="#" class="bt last">>></a>
+                <a href="/blogs/list/1" class="bt first"><<</a>
+                <a th:if="${page != null}" th:href="@{{page} (page=${page}-1)}" class="bt prev"><</a>
+                <a href="/blogs/list/1" class="num">1</a>
+                <a href="/blogs/list/2" class="num">2</a>
+                <a href="/blogs/list/3" class="num">3</a>
+                <a href="/blogs/list/4" class="num">4</a>
+                <a href="/blogs/list/5" class="num">5</a>
+                <a th:href="@{{page} (page=${page}+1)}" class="bt next">></a>
+                <a href="/blogs/list/5" class="bt last">>></a>
             </div>
             <div class="bt_wrap">
-                <a href="write" class="on" >등록</a>
+                <a href="/blogs/write" class="on" >등록</a>
                 <!--<a href="#">수정</a>-->
             </div>
         </div>

@@ -217,6 +217,12 @@ a {
     font-size: 1.4rem;
 }
 
+.board_view .vote {
+    padding: 15px;
+    font-size:5rem;
+
+}
+
 .board_write {
     border-top: 2px solid #000;
 }
