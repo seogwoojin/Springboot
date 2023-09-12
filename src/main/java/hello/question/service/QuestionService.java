@@ -2,6 +2,7 @@ package hello.question.service;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
 
@@ -96,5 +97,9 @@ public class QuestionService {
                         cb.like(u2.get("username"), "%" + kw + "%"));   // 답변 작성자
             }
         };
+    }
+
+    public List<Question> findAllDesc(){
+        return jpaQuestionRepository.findAllDesc();
     }
 }

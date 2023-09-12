@@ -37,6 +37,12 @@ public class QuestionController {
         return "question_list";
     }
 
+    @GetMapping("/test")
+    public String questionTest(Model model){
+        List<Question> question = this.questionService.findAllDesc();
+        model.addAttribute("questionList", question);
+        return "test";
+    }
     @PreAuthorize("isAuthenticated()")
     @GetMapping("/create")
     public String questionCreate(QuestionForm questionForm) {
@@ -84,7 +90,7 @@ public class QuestionController {
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "삭제권한이 없습니다.");
         }
         this.questionService.delete(question);
-        return "redirect:/";
+        return "redirect:/question/list";
     }
     @PreAuthorize("isAuthenticated()")
     @GetMapping("/vote/{id}")
@@ -94,4 +100,7 @@ public class QuestionController {
         this.questionService.vote(question, siteUser);
         return String.format("redirect:/question/detail/%s", id);
     }
+
+
+
 }
